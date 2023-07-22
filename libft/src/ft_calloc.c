@@ -6,7 +6,7 @@
 /*   By: akostrik <akostrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:21:18 by akostrik          #+#    #+#             */
-/*   Updated: 2022/11/21 17:59:26 by akostrik         ###   ########.fr       */
+/*   Updated: 2022/11/26 20:36:49 by akostrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,9 @@ the glibc malloc() allocates the memory as a private anonymous mapping using
 mmap(2)
 MMAP_THRESHOLD is 128 kB by default, but is adjustable using mallopt(3)
 
-To avoid corruption in multithreaded applications, mutexes are used internally
-to protect the memory-management data structures employed by these functions.
-In a multithreaded application in which threads simultaneously allocate and
-free memory, there could be contention for these mutexes.
-To scalably handle memory allocation in multithreaded applications, glibc
-creates additional memory allocation arenas if mutex contention is detected.
-Each arena is a large region of memory that is internally allocated by the
-system
-(using brk(2) or mmap(2)), and managed with its own mutexes.
-SUSv2 requires calloc() to set errno to ENOMEM upon failure.
-Glibc assumes that this is done (and the glibc versions of these routines do
-this)
 Crashes are almost always related to heap corruption, such as overflowing an
 allocated chunk or freeing the same pointer twice
 */
-
-// 1.OK 2.MOK 3.OK
-// void * p = ft_calloc(2, 2); char e[] = {0, 0, 0, 0};
-// 1) check(!memcmp(p, e, 4))
-// 2) mcheck(p, 4); free(p);
-
-// ./submit/libft.a(ft_calloc.o): warning: relocation in read-only section `.text'
-// /usr/bin/ld: warning: creating DT_TEXTREL in a PIE
 
 #include "libft.h"
 
@@ -64,7 +44,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	i;
 
 	if (nmemb == 0 || size == 0)
-		return (NULL);
+		return (malloc(0));
 	if ((unsigned int)nmemb > INT_MAX / (unsigned int)size)
 		return (NULL);
 	memory_to_return = (char *)malloc(nmemb * size);

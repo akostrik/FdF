@@ -17,21 +17,25 @@ OBJS := $(OBJS:%.c=%.o)
 all : fdf
 
 fdf	: ${OBJS}
-	cc -g $(OBJS) -o fdf -Llibft -lft -Lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+	cc -g $(OBJS) -o fdf -Llibft -lft -Lminilibx-linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
-./.build/%.o : ./src/%.c ./libft/libft.a ./mlx/libmlx_Linux.a
+./.build/%.o : ./src/%.c ./libft/libft.a ./minilibx-linux/libmlx_Linux.a
 	mkdir -p ./.build
-	cc -Wall -Werror -Wextra -I ./src -I ./libft -I ./mlx -O3 -c $< -o $@
+	cc -Wall -Werror -Wextra -I ./src -I ./libft -I ./minilibx-linux -O3 -c $< -o $@
 
-./libft/libft.a:
+./libft/libft.a :
 	make -C ./libft
+
+./minilibx-linux/libmlx_Linux.a :
+	make -C ./minilibx-linux
 
 clean :
 	make -C ./libft clean
+	make -C ./minilibx-linux clean
 	rm -rf ${OBJS}
 
 fclean : clean
-	rm -rf fdf ./libft/libft.a
+	rm -rf fdf ./libft/libft.a ./minilibx-linux/libmlx_Linux.a
 
 re : fclean all
 

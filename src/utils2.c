@@ -6,7 +6,7 @@
 /*   By: akostrik <akostrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 16:06:29 by akostrik          #+#    #+#             */
-/*   Updated: 2023/07/23 16:08:13 by akostrik         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:14:09 by akostrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ int	exit_(t_data **d)
 	exit(EXIT_SUCCESS);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: akostrik <akostrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:56:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/07/23 15:57:44 by akostrik         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:14:01 by akostrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,4 @@ int	main(int argc, char **argv)
 	mlx_hook(d->win, DestroyNotify, 0, &exit_, &d);
 	mlx_hook(d->win, KeyPress, KeyPressMask, &exit_esc_key, &d);
 	mlx_loop(d->mlx);
-	//exit_(&d); // ?
 }

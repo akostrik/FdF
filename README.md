@@ -3,9 +3,7 @@
 
 **Installation and test**:
 
-git clone --recurse-submodules  
-
-git@github.com:akostrik/fdf.git fdf
+git clone --recurse-submodules git@github.com:akostrik/fdf.git fdf
 
 cd fdf
 

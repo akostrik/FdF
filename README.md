@@ -1,6 +1,7 @@
 42 School project
 
-Installation and test:
+
+**Installation and test**:
 
 git clone --recurse-submodules  
 

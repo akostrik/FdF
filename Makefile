@@ -6,18 +6,18 @@
 #    By: akostrik <akostrik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/20 21:17:38 by akostrik          #+#    #+#              #
-#    Updated: 2023/07/20 22:15:14 by akostrik         ###   ########.fr        #
+#    Updated: 2023/07/23 16:07:21 by akostrik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c calc_image.c utils.c
+SRCS = main.c calc_image.c utils1.c utils2.c
 OBJS = $(addprefix ./.build/, $(SRCS))
 OBJS := $(OBJS:%.c=%.o)
 
 all : fdf
 
 fdf	: ${OBJS}
-	cc -g $(OBJS) -o fdf -Llibft -lft -Lminilibx-linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+	cc -Wall -Werror -Wextra -g $(OBJS) -o fdf -Llibft -lft -Lminilibx-linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
 ./.build/%.o : ./src/%.c ./libft/libft.a ./minilibx-linux/libmlx_Linux.a
 	mkdir -p ./.build

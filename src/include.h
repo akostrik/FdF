@@ -6,7 +6,7 @@
 /*   By: akostrik <akostrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 01:05:03 by akostrik          #+#    #+#             */
-/*   Updated: 2023/07/20 21:09:46 by akostrik         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:04:39 by akostrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_lst
 	struct s_lst	*nxt;
 }	t_lst;
 
+// win mlx_win_list_t ?
 typedef struct s_data
 {
 	t_node		**n;
@@ -73,5 +74,6 @@ void	set_y_max(t_data **d);
 int		get_next_val(t_data **d);
 void	calc_image(t_data *d);
 int		exit_(t_data **d);
+int		exit_esc_key(int keysym, t_data **d);
 
 #endif

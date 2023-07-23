@@ -6,13 +6,15 @@
 /*   By: akostrik <akostrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:56:54 by akalimol          #+#    #+#             */
-/*   Updated: 2023/07/20 21:12:05 by akostrik         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:57:44 by akostrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //mlx_loop inf loop waits for events
 // Vous devez utiliser la MiniLibX. Soit la version disponible sur les machines 
 // de l’école, soit en l’installant par les sources
+
+// a hook = a function that gets called whenever a event is triggered
 
 #include "include.h"
 
@@ -131,5 +133,7 @@ int	main(int argc, char **argv)
 	calc_image(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img_mlx, 0, 0);
 	mlx_hook(d->win, DestroyNotify, 0, &exit_, &d);
+	mlx_hook(d->win, KeyPress, KeyPressMask, &exit_esc_key, &d);
 	mlx_loop(d->mlx);
+	//exit_(&d); // ?
 }

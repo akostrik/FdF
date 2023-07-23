@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+         #
+#    By: akostrik <akostrik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 12:54:42 by akalimol          #+#    #+#              #
-#    Updated: 2023/02/13 19:22:26 by akalimol         ###   ########.fr        #
+#    Updated: 2023/07/23 13:55:24 by akostrik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ libft.a : $(OBJS)
 	ar rcs libft.a $(OBJS)
 
 ./.build/%.o: ./src/%.c
+	mkdir -p ./.build
 	cc -Wall -Wextra -Werror -I . -c $< -o $@
  
 clean :
